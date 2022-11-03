@@ -4,11 +4,12 @@
     // "wesbos",
     "next/core-web-vitals"
   ],
+  "root": true,
   "env": {
     "es6": true,
     "jest/globals": true
   },
-  "plugins": ["jest"],
+  "plugins": ["jest", "filenames"],
   "rules": {
     "semi": ["error", "never"],
     "indent": ["error", 2],
@@ -16,8 +17,11 @@
     "quotes": ["error", "double"],
 
     "no-unused-vars": "error",
-    "react/prop-types": 0,
-    "react/jsx-props-no-spreading": 0,
-    "import/no-unresolved": 0
+    "react/prop-types": "off",
+    "react/jsx-props-no-spreading": "off",
+    "import/no-unresolved": "off",
+
+    "filenames/match-exported": "off",
+    "filenames/no-index": "off"
   }
 }

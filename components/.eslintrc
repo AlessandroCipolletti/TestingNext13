@@ -1,0 +1,7 @@
+{
+  "rules": {
+    "filenames/match-exported": "error",
+    "filenames/no-index": "error",
+    "react/prop-types": "error"
+  }
+}
