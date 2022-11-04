@@ -2,15 +2,17 @@ import React from "react"
 import PropTypes from "prop-types"
 
 
-const MyComponent = ({
+const MyComponent1 = ({
   prop = "value",
 }) => {
 
   return <div>{prop}</div>
 }
 
-MyComponent.propTypes = {
+MyComponent1.propTypes = {
   prop: PropTypes.string,
 }
 
-export default MyComponent
+MyComponent1.isPublic = true
+
+export default MyComponent1

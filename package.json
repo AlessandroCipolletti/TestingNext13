@@ -12,15 +12,17 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start-old": "next start",
     "start": "cross-env NODE_ENV=production node server.js",
     "launch": "npm run build && npm run start",
     "export": "next export",
     "add-git-hooks": "husky install",
-    "lint": "next lint",
-    "lint:quiet": "next lint --quiet",
-    "lint:fix": "next lint --fix",
-    "lint:commit": "eslint --quiet $(git diff --name-only HEAD | grep -E '\\.(js|jsx)$' | xargs)",
+    "check-components": "node scripts/check-components files=all",
+    "check-components:commit": "node scripts/check-components $(git diff --name-only HEAD | grep -E '\\.(js|jsx)$' | xargs)",
+    "check-components:commit:fix": "node scripts/check-components $(git diff --name-only HEAD | grep -E '\\.(js|jsx)$' | xargs) --fix",
+    "lint": "npm run check-components && next lint",
+    "lint:fix": "npm run check-components && next lint --fix",
+    "lint:quiet": "npm run check-components && next lint --quiet",
+    "lint:commit": "npm run check-components:commit && eslint --quiet $(git diff --name-only HEAD | grep -E '\\.(js|jsx)$' | xargs)",
     "test": "jest --colors --collectCoverage --config ./jest.config.cjs",
     "validate-commit": "npm-run-all --parallel lint:commit"
   },
@@ -30,7 +32,10 @@
     "next": "13.0.1",
     "prop-types": "^15.8.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "redis": "^4.3.1",
+    "cross-env": "^7.0.2",
+    "express": "^4.18.2"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
