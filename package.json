@@ -22,7 +22,7 @@
     "lint": "npm run check-components && next lint",
     "lint:fix": "npm run check-components && next lint --fix",
     "lint:quiet": "npm run check-components && next lint --quiet",
-    "lint:commit": "npm run check-components:commit && eslint --quiet $(git diff --name-only HEAD | grep -E '\\.(js|jsx)$' | xargs)",
+    "lint:commit": "npm run check-components:commit:fix && eslint --quiet $(git diff --name-only HEAD | grep -E '\\.(js|jsx)$' | xargs)",
     "test": "jest --colors --collectCoverage --config ./jest.config.cjs",
     "validate-commit": "npm-run-all --parallel lint:commit"
   },
